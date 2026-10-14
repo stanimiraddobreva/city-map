@@ -12,10 +12,16 @@ public class CityMap {
     }
 
     public void addStreet(String from, String to, int length) {
-        addJunction(from);
-        addJunction(to);
-        graph.get(from).add(new Street(to, length));
+    Street street = new Street(to, length);   
+    for (Street s : graph.getOrDefault(from, List.of())) {
+        if (s.getTo().equals(to)) {           /
+            throw new IllegalArgumentException("Street already exists: " + from + " -> " + to);
+        }
     }
+    addJunction(from);
+    addJunction(to);
+    graph.get(from).add(street);
+}
 
     public Set<String> getJunctions() {
         return graph.keySet();
