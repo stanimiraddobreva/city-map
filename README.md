@@ -15,7 +15,7 @@ CityMap/
 │       ├── CityMap.java       — the graph itself (adjacency list) + adding junctions/streets
 │       ├── PathChecker.java   — check whether a path exists between two junctions (BFS)
 │       ├── ContainsCycle.java — can we tour around and return to the starting junction (DFS)
-│       ├── Reach.java  — are all junctions reachable from a given one (BFS)
+│       ├── Reachability.java  — are all junctions reachable from a given one (BFS)
 │       └── DeadEnd.java       — find all dead-end streets
 └── README.md
 ```
@@ -39,11 +39,20 @@ CityMap/
 
 ## Running it
 
-`Main.java` contains two hardcoded maps:
-- `buildDemoMap()` — a larger map, deliberately built so that every check has an example for both "yes" and "no" (includes cycles, a dead-end street, and an isolated, disconnected component).
-- `buildFullyConnectedMap()` — a small, fully connected map, used as a contrast (demonstrates the "yes"/"no dead ends" cases).
+`Main.java` builds one hardcoded sample map (`buildSampleMap()`), taken from the assignment's example, and prints the result of each of the four implemented tasks to the console.
 
-Just run `Main.main()` — the results are printed to the console for each of the four implemented tasks.
+From the `src/` directory:
+
+    javac model/*.java Main.java
+    java Main
+
+Expected output covers:
+
+- the map itself (each junction with its outgoing streets);
+- path existence between two junctions (one yes/no pair);
+- whether a tour returns to the starting junction (cycle check);
+- whether all junctions are reachable from a given one, and which are not;
+- the list of dead-end streets (or a message that there are none).
 
 ## Requirements
 
