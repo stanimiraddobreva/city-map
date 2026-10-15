@@ -15,7 +15,7 @@ public class Street {
 
     public void setTo(String to) {
         if (to == null || to.isBlank()) {
-            throw new IllegalArgumentException("Името на кръстовището не може да бъде празно.");
+            throw new IllegalArgumentException("Name cannot be empty.");
         }
         this.to = to;
     }
